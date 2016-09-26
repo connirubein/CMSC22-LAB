@@ -35,7 +35,7 @@ public class Date{
    }
 
    public void setYear(int year){
-      
+
       if(year>9999 || year<1000){
          throw new IllegalArgumentException("Input of year is unaaceptable !");
       }
@@ -63,11 +63,11 @@ public class Date{
       if (year%100!=0  && divBy4){     //divBy100 = false
          this.leap = true;
       }
-   
+
    }
 
    public void setMonth(int month){
-      
+
       if(month<1 || month>12){
          throw new IllegalArgumentException("Input of month is unaaceptable !");
       }
@@ -102,11 +102,11 @@ public class Date{
       if(day>30 && (this.month == 4 || this.month == 6 || this.month == 9 || this.month == 11)){   //4, 6, 9, 11 == 30 days
          throw new IllegalArgumentException("Input of day for this month must be 1-30 inclusive!");
       }
-      this.day = day;      
+      this.day = day;
    }
 
    public String toString(){
-      return String.format("%02d//%02d//%d", this.month, this.day, this.year);
+      return String.format("%02d/%02d/%d", this.month, this.day, this.year);
    }
 
    public void setDate(int year, int month, int day){
