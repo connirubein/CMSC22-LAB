@@ -3,11 +3,9 @@ import java.util.*;
 public class TestAccount{
 
    public static void main(String[] args) {
-      // Test constructor and toString()
+      
       Account a1 = new Account(123, 1000.0);
       System.out.println(a1);
-      System.out.println(a2); 
-      // Test Setters and Getters
 
       a1.setBalance(2000.0);
 
