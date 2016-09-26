@@ -42,6 +42,6 @@ public class Account{
 	}
 
 	public String toString(){
-		return String.format("A/C no:%d, Balance=$%.2f", this.accountNumber, this.balance);
+		return String.format("A/C no: %d, Balance = $%.2f", this.accountNumber, this.balance);
 	}
 }
