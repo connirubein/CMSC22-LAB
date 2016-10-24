@@ -1,0 +1,287 @@
+package gui;
+
+/**
+ * Created by Conni on 10/24/2016.
+ */
+import com.sun.org.apache.xpath.internal.SourceTree;
+import javafx.scene.control.CheckBox;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+import javax.swing.JOptionPane;
+
+public class game extends Frame {
+
+    //labels
+    private Label lblLabel;
+    private Label lblScore1;
+    private Label lblScore2;
+    //button
+    private Button btnRPSLS;
+    //Checkboxes
+    private Checkbox rck;
+    private Checkbox ppr;
+    private Checkbox sc;
+    private Checkbox lzrd;
+    private Checkbox spck;
+    //textAreas
+    private TextArea theResults;
+    private TextArea p1Score;
+    private TextArea p2Score;
+    //scores
+    private int playerScore = 0;
+    private int compScore = 0;
+
+    private Random rand = new Random();
+
+    public game() {
+        setLayout(new FlowLayout());
+        // "super" Frame (a Container) sets its layout to FlowLayout, which arranges
+        // the components from left-to-right, and flow to next row from top-to-bottom.
+
+        //labels
+        lblLabel = new Label("Your choice: ");
+        lblScore1 = new Label("Player's Score: ");
+        lblScore2 = new Label("Computer's Score: ");
+        //lblIntScore1 = new Label("0");
+        //lblIntScore2 = new Label("0");
+        //button
+        btnRPSLS = new Button("RockPaperScissorsLizardSpock!");
+        //checkboxgroup
+        CheckboxGroup action = new CheckboxGroup();
+        rck = new Checkbox("Rock", action, true);
+        ppr = new Checkbox("Paper", action, true);
+        sc = new Checkbox("Scissors", action, true);
+        lzrd = new Checkbox("Lizard", action, true);
+        spck = new Checkbox("Spock", action, true);
+        //text areas
+        theResults = new TextArea(10, 60);
+        p1Score = new TextArea(3, 2);
+        p2Score = new TextArea(3, 2);
+        theResults.setText("Results:");
+        //so that the text won't be changed when running
+        theResults.setEditable(false);
+        p1Score.setEditable(false);
+        p2Score.setEditable(false);
+        //button
+        btnRPSLS = new Button("RockPaperScissorsLizardSpock!");
+
+        //anonymous class
+        btnRPSLS.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                theResults.setText("Results:");
+                //0-rock    1-paper     2-scissors      3-lizard    4-spock
+                String select = action.getSelectedCheckbox().getLabel();        //player's move
+                int randComputer = rand.nextInt(5);     //computer's move
+                if (select.equals("Rock")){            //player: rock
+                    theResults.append("\nPlayer chose Rock");
+                    if(randComputer == 2){              //computer: scissors
+                        playerScore++;
+                        theResults.append("\nComputer chose Scissors");
+                        theResults.append("\nYou win this round!");
+                    }
+
+                    else if(randComputer == 3){         //computer: lizard
+                        playerScore++;
+                        theResults.append("\nComputer chose Lizard");
+                        theResults.append("\nYou win this round!");
+                    }
+
+                    else if(randComputer == 1){         //computer: paper
+                        compScore++;
+                        theResults.append("\nComputer chose Paper");
+                        theResults.append("\nThe Computer scored this round!");
+                    }
+
+                    else if(randComputer == 4){         //computer: spock
+                        compScore++;
+                        theResults.append("\nComputer chose Spock");
+                        theResults.append("\nThe Computer scored this round!");
+                    }
+
+                    else{       //computer:rock
+                        theResults.append("\nComputer chose Rock");
+                        theResults.append("\nNothing happened!");
+                    }
+                }
+                else if(select.equals("Paper")){     //player: paper
+
+                    theResults.append("\nPlayer chose Paper");
+
+                    if(randComputer == 0) {          //computer: rock
+                        playerScore++;
+                        theResults.append("\nComputer chose Rock");
+                        theResults.append("\nYou win this round!");
+                    }
+                    else if(randComputer == 4){     //computer: spock
+                        playerScore++;
+                        theResults.append("\nComputer chose Spock");
+                        theResults.append("\nYou win this round!");
+                    }
+                    else if(randComputer == 2){   //computer: scissors
+                        compScore++;
+                        theResults.append("\nComputer chose Scissors");
+                        theResults.append("\nThe Computer scored this round!");
+                    }
+                    else if (randComputer == 3){     //computer: lizard
+                        compScore++;
+                        theResults.append("\nComputer chose Lizard");
+                        theResults.append("\nThe Computer scored this round!");
+                    }
+
+                    else{       //computer:paper
+                        theResults.append("\nComputer chose Paper");
+                        theResults.append("\nNothing happened!");
+                    }
+                }
+                else if(select.equals("Scissors")){     //player: scissors
+
+                    theResults.append("\nPlayer chose Scissors");
+
+                    if(randComputer == 1){      //computer: paper
+                        playerScore++;
+                        theResults.append("\nComputer chose Paper");
+                        theResults.append("\nYou win this round!");
+                    }
+                    else if(randComputer == 3){     //computer: lizard
+                        playerScore++;
+                        theResults.append("\nComputer chose Lizard");
+                        theResults.append("\nYou win this round!");
+                    }
+                    else if(randComputer == 0){     //computer: rock
+                        compScore++;
+                        theResults.append("\nComputer chose Rock");
+                        theResults.append("\nThe Computer scored this round!");
+                    }
+
+                    else if(randComputer == 4){     //computer: spock
+                        compScore++;
+                        theResults.append("\nComputer chose Spock");
+                        theResults.append("\nThe Computer scored this round!");
+                    }
+
+                    else{       //computer:scissors
+                        theResults.append("\nComputer chose Scissors");
+                        theResults.append("\nNothing happened!");
+                    }
+                }
+
+                else if(select.equals("Lizard")){     //player: lizard
+
+                    theResults.append("\nPlayer chose Lizard");
+
+                    if(randComputer == 1){          //computer: paper
+                        playerScore++;
+                        theResults.append("\nComputer chose Paper");
+                        theResults.append("\nYou win this round!");
+                    }
+
+                    else if(randComputer == 4){     //computer: spock
+                        playerScore++;
+                        theResults.append("\nComputer chose Spock");
+                        theResults.append("\nYou win this round!");
+                    }
+                    else if(randComputer == 2){     //computer: scissors
+                        compScore++;
+                        theResults.append("\nComputer chose Scissors");
+                        theResults.append("\nThe Computer scored this round!");
+                    }
+
+                    else if (randComputer == 0){     //computer: rock
+                        compScore++;
+                        theResults.append("\nComputer chose Rock");
+                        theResults.append("\nThe Computer scored this round!");
+                    }
+
+                    else{       //computer:lizard
+                        theResults.append("\nComputer chose Lizard");
+                        theResults.append("\nNothing happened!");
+                    }
+                }
+                else{                           //player: spock
+
+                    theResults.append("\nPlayer chose Spock");
+
+                    if(randComputer == 2){      //computer: scissors
+                        playerScore++;
+                        theResults.append("\nComputer chose Scissors");
+                        theResults.append("\nYou win this round!");
+                    }
+
+                    else if(randComputer == 0){     //computer: rock
+                        playerScore++;
+                        theResults.append("\nComputer chose Rock");
+                        theResults.append("\nYou win this round!");
+                    }
+
+                    else if(randComputer == 1){     //computer: paper
+                        compScore++;
+                        theResults.append("\nComputer chose Paper");
+                        theResults.append("\nThe Computer scored this round!");
+                    }
+
+                    else if(randComputer == 3){     //computer: lizard
+                        compScore++;
+                        theResults.append("\nComputer chose Lizard");
+                        theResults.append("\nThe Computer scored this round!");
+                    }
+
+                    else{       //computer:spock
+                        theResults.append("\nComputer chose Spock");
+                        theResults.append("\nNothing happened!");
+                    }
+
+                }
+                p1Score.setText(playerScore + "");
+                p2Score.setText(compScore + "");
+                if(playerScore == 5){
+                    if(JOptionPane.showConfirmDialog(null,
+                            "YOU WON THE GAME\nPlay again?",
+                            "GAME OVER!",
+                            JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+                        new game();
+                    }
+                    else{System.exit(ABORT);}
+
+                }
+                else if(compScore == 5){
+                    if(JOptionPane.showConfirmDialog(null,
+                            "THE COMPUTER WON THE GAME\nPlay again?",
+                            "GAME OVER!",
+                            JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION){
+                        System.exit(ABORT);
+                    }
+                    else{new game();}
+                }
+            }
+        });
+
+        // add them to container
+        add(lblLabel);
+        add(rck);
+        add(ppr);
+        add(sc);
+        add(lzrd);
+        add(spck);
+        add(btnRPSLS);
+        add(theResults);
+        add(lblScore1);
+        add(p1Score);
+        add(lblScore2);
+        add(p2Score);
+
+        setTitle("Rock Paper Scissors Lizard Spock!");
+        setSize(500, 550);
+        setVisible(true);
+
+
+    }
+
+    // inner class
+    public static void main(String[] args) {
+        new game();
+    }
+}
