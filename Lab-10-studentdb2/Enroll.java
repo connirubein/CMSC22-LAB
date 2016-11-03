@@ -15,7 +15,7 @@ import java.io.*;
 
 public class Enroll {
 
-    //private static final String FILE_NAME = "testing.txt";
+    //private static final String FILE_NAME = "input.txt";
 
     List<Student> lList = new ArrayList<Student>();
     FileInputStream fis = null;
