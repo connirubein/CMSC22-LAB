@@ -5,8 +5,14 @@ import java.io.Serializable;
  * Created by Conni on 11/3/2016.
  */
 public class Course implements Serializable{
+    
     private String courseCode;
     private String courseDescription;
+    
+    public Course(String cc, String cd){
+        this.courseCode = cc;
+        this.courseDescription = cd;
+    }
 
     public String getCourseCode() {
         return courseCode;
