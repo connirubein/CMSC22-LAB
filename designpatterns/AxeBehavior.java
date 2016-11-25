@@ -1,3 +1,4 @@
+package designpatterns;
 import java.util.*;
 
 public class AxeBehavior implements WeaponBehavior{
